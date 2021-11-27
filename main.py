@@ -26,7 +26,15 @@ Selectable variables
 python hashing
 
 """
-
+def email():
+    try:
+        email_in = input("Please enter Users")
+        if "@" and "." in email_in:
+            return email_in
+        else: raise ValueError
+    except ValueError:
+        print("please enter a correct email. ")
+        email()
 class User:
     users = []
     def __init__(self, first_name, last_name, email):
@@ -48,11 +56,13 @@ class User:
         self.users.append(self.email)
 
 
+
     def create_user():
         user=User(
             first_name = input("Please enter Users first name: "),
             last_name = input("Please enter Users last name: "),
-            email = input("Please enter Users email: ")
+            email = email()
         )
 
 
+User.create_user()
