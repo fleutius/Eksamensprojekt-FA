@@ -1,6 +1,5 @@
-import os
-import hashlib
-
+from Classes import User
+import checks
 ##Design Fase 
 
 #Requerements list:
@@ -26,43 +25,20 @@ Selectable variables
 python hashing
 
 """
-def email():
-    try:
-        email_in = input("Please enter Users")
-        if "@" and "." in email_in:
-            return email_in
-        else: raise ValueError
-    except ValueError:
-        print("please enter a correct email. ")
-        email()
-class User:
-    users = []
-    def __init__(self, first_name, last_name, email):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.name = (first_name + ' ' + last_name)
-        self.email = email
-        self.salt = os.urandom(32)
-        self.password = input("Please enter your password: ")
-        self.key = hashlib.pbkdf2_hmac(
-            'sha256',
-            self.password.encode('utf8'),
-            self.salt,
-            100000,
-            dklen=128
-        )
-        self.storedpass = self.salt + self.key
-        self.password = ''
-        self.users.append(self.email)
+#----------------------------------------------------------------
+# TODO:
+# Add Text file to
+# Integrate text file:
+#----------------------------------------------------------------
 
-
-
-    def create_user():
-        user=User(
-            first_name = input("Please enter Users first name: "),
-            last_name = input("Please enter Users last name: "),
-            email = email()
-        )
+def create_user():
+    user=User(
+        initials = checks.initials_check(),
+        first_name = input("Please enter Users first name: "),
+        last_name = input("Please enter Users last name: "),
+        email = checks.email_check(),
+        access_level = checks.access_level_check(),
+    )
 
 
 User.create_user()
