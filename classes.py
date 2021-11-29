@@ -32,9 +32,9 @@ class User:
     def user_registration(self):
         with open("user_file.txt", "r") as check_file:
             if self.email in check_file.read():
-                print("The emails, is allready registered. ")
+                print("The email, is allready registered. ")
             elif self.initials in check_file.read():
-                print("The initials is allready registered. ")
+                print("The initials are allready registered. ")
             else:
                 with open("user_file.txt", "a") as user_file:
                     lines = f"{self.initials} - {self.name} - {self.email} - {self.access_level} - {self.key}\n" 
