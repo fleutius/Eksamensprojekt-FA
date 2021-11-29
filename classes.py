@@ -1,8 +1,11 @@
+
 import os
 import hashlib
 
 class User:
-    users = []
+    '''File handling part'''
+    
+    
     def __init__(self,initials ,first_name, last_name, email, access_level):
         self.initials = initials
         self.first_name = first_name
@@ -21,4 +24,23 @@ class User:
         )
         self.storedpass = self.salt + self.key
         self.password = ''
-        self.users.append(self.email)
+        self.user_file = open("user_file.txt", "a")
+        lines = f"{self.initials} - {self.name} - {self.email} - {self.access_level} - {self.key}\n" 
+        self.user_file.writelines(str(lines))
+        self.user_file.close()
+
+
+    def file_read():
+        with open("user_file.txt", 'r') as f:
+            read_file = f.readlines()
+            for line in read_file:
+                wordInLine = line.split("-")
+                print(f"Initialer: {wordInLine[0]}\nNavn: {wordInLine[1]}\nEmail: {wordInLine[2]}\nprofil: {wordInLine[3]}\nHashed Kode: {wordInLine[4]}")
+
+    def fffd():
+        f= open("user_file.txt","r")
+        print(f)
+
+
+
+User.file_read()

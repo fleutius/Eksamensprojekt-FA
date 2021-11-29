@@ -1,4 +1,4 @@
-from Classes import User
+from classes import User
 import checks
 ##Design Fase 
 
@@ -41,4 +41,17 @@ def create_user():
     )
 
 
-User.create_user()
+
+
+#User.create_user()
+
+
+
+'''File handling part'''
+def main():
+    create_user()
+    User.file_read()
+
+
+
+main()

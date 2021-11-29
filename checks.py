@@ -6,7 +6,7 @@ def email_check():
         else: raise ValueError
     except ValueError:
         print("please enter a valid e-mail. ")
-        email()
+        email_check()
 
 def initials_check():
     try:
