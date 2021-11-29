@@ -24,10 +24,22 @@ class User:
         )
         self.storedpass = self.salt + self.key
         self.password = ''
+        
         self.user_file = open("user_file.txt", "a")
-        lines = f"{self.initials} - {self.name} - {self.email} - {self.access_level} - {self.key}\n" 
-        self.user_file.writelines(str(lines))
-        self.user_file.close()
+
+
+
+    def user_registration(self):
+        with open("user_file.txt", "r") as check_file:
+            if self.email in check_file.read():
+                print("The emails, is allready registered. ")
+            elif self.initials in check_file.read():
+                print("The initials is allready registered. ")
+            else:
+                with open("user_file.txt", "a") as user_file:
+                    lines = f"{self.initials} - {self.name} - {self.email} - {self.access_level} - {self.key}\n" 
+                    self.user_file.writelines(lines)
+                    print("The requested user has been registered ")
 
 
     def file_read():
@@ -43,4 +55,3 @@ class User:
 
 
 
-User.file_read()

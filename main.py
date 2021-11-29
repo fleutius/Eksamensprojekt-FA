@@ -37,8 +37,9 @@ def create_user():
         first_name = input("Please enter Users first name: "),
         last_name = input("Please enter Users last name: "),
         email = checks.email_check(),
-        access_level = checks.access_level_check(),
+        access_level = checks.access_check(),
     )
+    User.user_registration
 
 
 

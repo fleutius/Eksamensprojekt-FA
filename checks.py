@@ -27,12 +27,13 @@ def initials_check():
 def access_check():
     try:
         access_in = input("Please enter Users Access level  (1-6) ")
-        if not isinstance(access_in, int):
+        test_access = eval(access_in)
+        if not isinstance(int(test_access), int):
             raise TypeError
         elif not len(access_in) == 1:
             raise ValueError
         else: 
-            return access_in
+            return test_access
     except TypeError:
         print("please enter access level using a number. ")
         access_check()
