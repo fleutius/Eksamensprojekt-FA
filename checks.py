@@ -11,15 +11,15 @@ def email_check():
 
 def initials_check():
     try:
-        initials_in = input("Please enter Users initials  (max 4 characters) ")
-        if initials_in == "":
-            raise ValueError
-        elif not isinstance(initials_in, str):
-            raise TypeError
-        elif len(initials_in) > 4:
+        initials_in = str(input("Please enter Users initials  (max 4 characters) "))
+        assert initials_in, "Please enter 1 - 4 characters"
+        if len(initials_in) > 4:
             raise ValueError
         else: 
             return initials_in
+    except AssertionError as error:
+        print(error)
+        initials_check()
     except TypeError:
         print("please enter initials with letters only. ")
         initials_check()

@@ -35,6 +35,7 @@ def contenue():
             assert selection == 1 or 2 or 3, "Please enter either 1, 2 or 3.. "
     except AssertionError as error:
         print(error)
+        contenue()
 
 def start_menu():
     print("What do you wish to do? ")
@@ -72,9 +73,4 @@ def main():
 
 
 
-def testo():
-    ene = ""
-    assert ene
-    print(type(ene))
-
-testo()
+main()
