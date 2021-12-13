@@ -28,7 +28,7 @@ class User:
         self.user_file = open("user_file.txt", "a")
 
     def user_registration(self):
-        with open("user_file.txt", "r") as check_file:
+        with open("user_file.txt", "a+") as check_file:
             try:
                 assert self.initials not in check_file.read(), "Initials is allready registrered"
                 assert self.email not in check_file.read(), "Email is allready registrered"
@@ -38,6 +38,7 @@ class User:
                 lines = f"{self.initials} - {self.name} - {self.email} - {self.access_level} - {self.key}\n" 
                 self.user_file.writelines(lines)
                 print("The requested user has been registered ")
+            finally: check_file.close()
 
     def file_read():
         with open("user_file.txt", 'r') as f:
