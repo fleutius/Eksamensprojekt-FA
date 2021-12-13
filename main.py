@@ -38,10 +38,10 @@ def start_menu():
     print("2 - View all registered users. ")
     selected = input("Please enter 1 / 2, for desired functionality. ")
     
-    if selected is "1":
+    if selected == "1":
         print("You have selected user registration. ")
         create_user()
-    if selected is "2":
+    if selected == "2":
         print("You have selected to view all registered users. ")
         User.file_read()
         contenue()
