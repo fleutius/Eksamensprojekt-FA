@@ -2,6 +2,8 @@ from classes import User
 import checks
 import sys
 
+open("user_file.txt", "a")
+
 def create_user():
     user=User(
         initials = checks.initials_check(),
@@ -48,11 +50,7 @@ def start_menu():
         start_menu()
         print()
 
-            
-
-
 User.file_read()
-
 
 def main():
     print()
