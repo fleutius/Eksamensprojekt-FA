@@ -39,12 +39,9 @@ def create_user():
         email = checks.email_check(),
         access_level = checks.access_check(),
     )
-    User.user_registration
+    user.user_registration()
 
 
-
-
-#User.create_user()
 
 
 
@@ -53,6 +50,6 @@ def main():
     create_user()
     User.file_read()
 
-
-
 main()
+
+
