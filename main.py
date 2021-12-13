@@ -1,35 +1,6 @@
 from classes import User
 import checks
-##Design Fase 
-
-#Requerements list:
-# Register users in a text file 
-# look for textfiles: initialer:navn:email:password:profil
-# Initialer: Maks 4 tegn der identificerer brugeren (Primary Key)
-# navn: Brugerens navn "Fornavn Efternavn" ---string
-# email: brugers email string med email - ligesom initialer er dette en identifikationsfaktor (primary key)
-#password: Hash af et indtastet password -
-# profil: encifret kode mellem 1-6 .Bruges til at tillade eller forhindre adgang til systemer (access level)
-
-
-# IDEER: F
-"""
-sdasd
-Bruger class
-data class?
-profil kan være en selectable
-Text file
-
-UNDERSØGES::::::::
-Selectable variables
-python hashing
-
-"""
-#----------------------------------------------------------------
-# TODO:
-# Add Text file to
-# Integrate text file:
-#----------------------------------------------------------------
+import sys
 
 def create_user():
     user=User(
@@ -40,16 +11,70 @@ def create_user():
         access_level = checks.access_check(),
     )
     user.user_registration()
+    contenue()
+
+def contenue():
+    print("Would you like to contenue? ")
+    print("1 - Yes, from the start. ")
+    print("2 - Yes, from user registration. ")
+    print("3 - No, end the program. ")
+    selection = eval(input("Please enter selection"))
+    try:
+        assert type(selection) == int, "Please use numbers. " 
+        selection = int(selection)
+    except AssertionError as digit_error:
+        print(digit_error)
+    try:    
+        if selection == 1:
+            start_menu()
+        elif selection == 2:
+            create_user()
+        elif selection == 3:
+            sys.exit
+        else:
+            assert selection == 1 or 2 or 3, "Please enter either 1, 2 or 3.. "
+    except AssertionError as error:
+        print(error)
+
+def start_menu():
+    print("What do you wish to do? ")
+    print("1 - Register new user into the system. ")
+    print("2 - View all registered users. ")
+    selected = input("Please enter 1 / 2, for desired functionality. ")
+    try:    
+        if selected is "1":
+            print("You have selected user registration. ")
+            create_user()
+        if selected is "2":
+            print("You have selected to view all registered users. ")
+            User.file_read()
+            contenue()
+        else:
+            print("Please enter either 1 or 2 to select functionality.. ")
+            start_menu()
+            print()
+    except AssertionError as error:
+        print(error)
+        start_menu()
+            
 
 
+User.file_read()
 
 
-
-'''File handling part'''
 def main():
-    create_user()
-    User.file_read()
+    print()
+    print("Welcome to the user management system. ")
+    print("Please beware, that the program creates a file called user_file.txt in the same directory as the program is running in. ")
+    print()
+    start_menu()
 
-main()
 
 
+
+def testo():
+    ene = ""
+    assert ene
+    print(type(ene))
+
+testo()

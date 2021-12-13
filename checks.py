@@ -3,7 +3,8 @@ def email_check():
         email_in = input("Please enter Users e-mail: ")
         if "@" and "." in email_in:
             return email_in
-        else: raise ValueError
+        else: 
+            raise ValueError
     except ValueError:
         print("please enter a valid e-mail. ")
         email_check()
@@ -11,7 +12,9 @@ def email_check():
 def initials_check():
     try:
         initials_in = input("Please enter Users initials  (max 4 characters) ")
-        if not isinstance(initials_in, str):
+        if initials_in == "":
+            raise ValueError
+        elif not isinstance(initials_in, str):
             raise TypeError
         elif len(initials_in) > 4:
             raise ValueError

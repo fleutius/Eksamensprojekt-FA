@@ -49,5 +49,14 @@ class User:
     def empty_file():
         open("user_file.txt", 'w')
 
+    def print_user(self):
+        print("Full Name: ")
+        print(self.name)
+        print("Email: ")
+        print(self.email)
+
+    def view_access(self):
+        print(f"User: {self.initials} has acces level {self.access_level}")
+
 
 
