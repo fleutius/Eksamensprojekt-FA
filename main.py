@@ -41,6 +41,7 @@ def start_menu():
     if selected == "1":
         print("You have selected user registration. ")
         create_user()
+        contenue()
     if selected == "2":
         print("You have selected to view all registered users. ")
         User.file_read()
@@ -48,7 +49,7 @@ def start_menu():
     else:
         print("Please enter either 1 or 2 to select functionality.. ")
         start_menu()
-        print()
+        
 
 User.file_read()
 
