@@ -1,9 +1,18 @@
+'''
+Eksamensprojekt-FA Python program af Flemming Kærgaard. 
+Bemærk, programmet opretter en text fil kaldet 'user_file.txt' i samme direktory som programmet køres fra. Denne fil er nødvendig for funktionaliteten af programmet.
+'''
+
+# sys importeres for at give exit funktionalitet
 from classes import User
 import checks
 import sys
 
-open("user_file.txt", "a")
+# Hvis ikke "user_file.txt" findes i mappen hvor programmet køres fra, oprettes denne fil. 
 
+
+# create_user() laver instance af User class fra Classes.py ud fra input fra brugeren. Disse input håndteres i nogle instanser af Checks.py for at sikre at det indtastede overholder de givne kriterier for opgaven.
+# Herefter benyttes user_registration fra Classes.py til at indføre instance i text filen.
 def create_user():
     user=User(
         initials = checks.initials_check(),
@@ -15,6 +24,7 @@ def create_user():
     user.user_registration()
     contenue()
 
+# contenue() muligtgører det for brugeren at fortsætte med at bruge programmet, selv efter den valgte funktionalitet er gennemført. 
 def contenue():
     print("Would you like to contenue? ")
     print("1 - Yes, from the start. ")
@@ -31,7 +41,7 @@ def contenue():
         print("Please enter either 1, 2 or 3.. ")
         contenue()
 
-
+# start_menu() er brugerens umiddelbare første niveau for interaktion. Det her fra at bruger vælger hvad der skal gøres.
 def start_menu():
     print("What do you wish to do? ")
     print("1 - Register new user into the system. ")
@@ -50,10 +60,9 @@ def start_menu():
         print("Please enter either 1 or 2 to select functionality.. ")
         start_menu()
         
-
-User.file_read()
-
+# main()'s eneste funktion er at informere kort om at der oprettes en text fil, og oprette samme text  fil, herefter videresendes bruger til start_menu()
 def main():
+    open("user_file.txt", "a")
     print()
     print("Welcome to the user management system. ")
     print("Please beware, that the program creates a file called user_file.txt in the same directory as the program is running in. ")
